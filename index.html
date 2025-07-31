@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>koneaki3風アイコンメーカー</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #f9f9f9;
+      font-family: sans-serif;
+    }
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+    }
+    .icon-part {
+      position: absolute;
+      left: 0; top: 0;
+      width: 300px;
+      height: 300px;
+    }
+    #download-section {
+      margin-top: 20px;
+    }
+    #download-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #download-btn:hover {
+      background-color: #005ea2;
+    }
+    #credit {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+    #credit a {
+      color: #0078D4;
+      text-decoration: none;
+    }
+    #credit a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>あなたの作ったアイコン</h1>
+  <div class="container" id="icon-area">
+    <img id="bg" class="icon-part" src="" alt="背景">
+    <img id="contour" class="icon-part" src="images/contour/1.png" alt="輪郭">
+    <img id="eyeL" class="icon-part" src="" alt="左目">
+    <img id="eyeR" class="icon-part" src="" alt="右目">
+    <img id="mouth" class="icon-part" src="" alt="口">
+  </div>
+
+  <div id="download-section">
+    <button id="download-btn">アイコンをダウンロード</button>
+    <p id="credit">
+      ©︎ <a href="https://scratch.mit.edu/users/YU1000/" target="_blank">YU1000</a>
+    </p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const eyeL = params.get("eyeL") || "1";
+    const eyeR = params.get("eyeR") || "1";
+    const mouth = params.get("mouth") || "1";
+    const bg = params.get("bg") || "1";
+
+    document.getElementById("bg").src = `images/bg/${bg}.png`;
+    document.getElementById("eyeL").src = `images/eyeL/${eyeL}.png`;
+    document.getElementById("eyeR").src = `images/eyeR/${eyeR}.png`;
+    document.getElementById("mouth").src = `images/mouth/${mouth}.png`;
+
+    document.getElementById("download-btn").addEventListener("click", () => {
+      html2canvas(document.getElementById("icon-area")).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'icon.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
