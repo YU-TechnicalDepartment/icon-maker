@@ -54,7 +54,7 @@
   <h1>あなたの作ったアイコン</h1>
   <div class="container" id="icon-area">
     <img id="bg" class="icon-part" src="" alt="背景">
-    <img id="contour" class="icon-part" src="images/contour/1.png" alt="輪郭">
+    <img id="contour" class="icon-part" src="images/contour/1.svg" alt="輪郭">
     <img id="eyeL" class="icon-part" src="" alt="左目">
     <img id="eyeR" class="icon-part" src="" alt="右目">
     <img id="mouth" class="icon-part" src="" alt="口">
@@ -74,10 +74,11 @@
     const mouth = params.get("mouth") || "1";
     const bg = params.get("bg") || "1";
 
-    document.getElementById("bg").src = `images/bg/${bg}.png`;
-    document.getElementById("eyeL").src = `images/eyeL/${eyeL}.png`;
-    document.getElementById("eyeR").src = `images/eyeR/${eyeR}.png`;
-    document.getElementById("mouth").src = `images/mouth/${mouth}.png`;
+    // 拡張子はすべて .svg に固定
+    document.getElementById("bg").src = `images/bg/${bg}.svg`;
+    document.getElementById("eyeL").src = `images/eyeL/${eyeL}.svg`;
+    document.getElementById("eyeR").src = `images/eyeR/${eyeR}.svg`;
+    document.getElementById("mouth").src = `images/mouth/${mouth}.svg`;
 
     document.getElementById("download-btn").addEventListener("click", () => {
       html2canvas(document.getElementById("icon-area")).then(canvas => {
