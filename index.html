@@ -11,15 +11,15 @@
     }
     .container {
       position: relative;
-      width: 300px;
-      height: 300px;
+      width: 358px;
+      height: 361px;
       margin: 30px auto;
     }
     .icon-part {
       position: absolute;
       left: 0; top: 0;
-      width: 300px;
-      height: 300px;
+      width: 358px;
+      height: 361px;
     }
     #download-section {
       margin-top: 20px;
@@ -81,7 +81,7 @@
     document.getElementById("mouth").src = `images/mouth/${mouth}.svg`;
 
     document.getElementById("download-btn").addEventListener("click", () => {
-      html2canvas(document.getElementById("icon-area")).then(canvas => {
+      html2canvas(document.getElementById("icon-area"), { scale: 2 }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'icon.png';
         link.href = canvas.toDataURL();
